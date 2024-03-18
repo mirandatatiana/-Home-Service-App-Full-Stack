@@ -32,13 +32,14 @@ const getBusinessList=async()=>{
       }
       contactPerson
       email
-      image {
+      images {
         url
       }
       id
       name
     }
-  }`
+  }
+ `
   const result=await request(MASTER_URL,query)
   return result
 }

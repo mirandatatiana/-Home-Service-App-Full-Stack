@@ -7,8 +7,8 @@ import { useEffect, useState } from "react"
 import BusinessLists from "./_components/BusinessList"
 export default function Home() {
 
-  const[categoryList,setCategoryList] = useState([]);
-  const[businessLists,setBusinessList] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
+  const [businessLists, setBusinessList] = useState([]);
   useEffect(() => {
     getCategoryList();
     getBusinessList();
@@ -20,20 +20,20 @@ export default function Home() {
     })
   }
 
-const getBusinessList=()=>{
-  GlobalApi.getBusinessList().then(resp=>{
-    setBusinessList(resp.businessLists)
-    console.log(resp.getBusinessList)
-  })
-}
+  const getBusinessList = () => {
+    GlobalApi.getBusinessList().then(resp => {
+      setBusinessList(resp.businessLists)
+      console.log(resp.getBusinessList)
+    })
+  }
 
   return <h1>
     <div>
       <Hero />
 
-      <CategoryList categoryList={categoryList}/>
+      <CategoryList categoryList={categoryList} />
       <BusinessLists businessLists={businessLists}
-      title={"Popular Business"}/>
+        title={"Popular Business"} />
     </div>
   </h1>
 }
