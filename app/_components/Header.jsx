@@ -1,5 +1,7 @@
+"use client"
 import Image from "next/image"; 
 import { Button } from "@/components/ui/button"
+import { signIn } from 'next-auth/react'
 function Header() {
   return (
     <div className="p-5 shadow-sm flex"  >
@@ -11,7 +13,7 @@ function Header() {
           <h2 className="hover:scale-105 hover:text-purple-800">About us</h2>
         </div>
         <div>
-        <Button>Iniciar Sesion</Button>
+        <Button onClick={()=>signIn('descope')} className="p-5 bg-purple-300 rounded-lg">Login / Sign up</Button>
         </div>
       </div>
     </div>
