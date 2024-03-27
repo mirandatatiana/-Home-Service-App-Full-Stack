@@ -1,7 +1,7 @@
 const { gql, default: request } = require("graphql-request")
 
 const MASTER_URL= 'https://api-us-east-1-shared-usea1-02.hygraph.com/v2/'+process.env.NEXT_PUBLIC_MASTER_URL_KEY+'/master'
-
+//Endpoints
 const getCategory=async()=>{
     const query=gql`
     query Category {
@@ -67,8 +67,32 @@ const getBusinessByCategory= async(category)=>{
   return result
 }
 
+const getBusinessById=async(id)=>{
+  const query=gql`
+  query GetBusinessById {
+    businessList(where: {id: "`+id+`"}) {
+      about
+      adress
+      category {
+        name
+      }
+      contactPerson
+      email
+      id
+      name
+      images {
+        url
+      }
+    }
+  }
+  `
+  const result=await request(MASTER_URL,query)
+  return result
+}
+
 export default {
     getCategory,
     getBusinessList,
-    getBusinessByCategory
+    getBusinessByCategory,
+    getBusinessById
 }

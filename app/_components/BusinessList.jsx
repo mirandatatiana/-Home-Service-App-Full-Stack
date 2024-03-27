@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
 
 function BusinessList({ businessLists, title }) {
   return (
@@ -9,7 +11,7 @@ function BusinessList({ businessLists, title }) {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-5">
         {businessLists.length > 0
           ? businessLists.map((business, index) => (
-              <div
+              <Link href={'/details/'+business.id}
                 className="shadow-sm rounded-lg hover:shadow-sm hover:shadow-slate-500 hover:scale-105 transition-all ease-in-out"
                 key={index}
               >
@@ -31,7 +33,7 @@ function BusinessList({ businessLists, title }) {
                     Book Now
                   </Button>
                 </div>
-              </div>
+              </Link>
             ))
           : [1, 2, 3, 4, 5, 6, 7].map((item, index) => (
               <div className="w-full h-[300px] bg-slate-200 rounded-lg animate-pulse"></div>
