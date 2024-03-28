@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import GlobalApi from '@/app/_service/GlobalApi';
-
+import BusinessInfo from '@/app/(routes)/_components/BusinessInfo'
 function BusinessDetails({params}) {
 
     const {data,status}=useSession();
@@ -37,7 +37,13 @@ function BusinessDetails({params}) {
 
 
   return status=='authenticated'&& (
-    <div>BusinessDetails</div>
+    <div className='py-8 md:py-20 px-10 md:px-36'>
+
+      <BusinessInfo business={business}/>
+
+
+
+    </div>
   )
 }
 
