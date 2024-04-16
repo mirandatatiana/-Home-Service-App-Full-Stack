@@ -1,10 +1,10 @@
-import { Notebook } from 'lucide-react'
+import { Notebook, NotebookPen } from 'lucide-react'
 import React, {useEffect,useState} from 'react'
 import { Button } from "@/components/ui/button";
 import GlobalApi from '@/app/_service/GlobalApi';
 import Image from 'next/image'
 import Link from "next/link";
-
+import BookingSection from '@/app/(routes)/_components/BookingSection';
 
 
 function SuggestedBusinessList({bussines}) {
@@ -25,12 +25,15 @@ function SuggestedBusinessList({bussines}) {
 
 
   return (
-    <div className='md:pl-10'>
-      <Button className="flex gap-2 w-full" >
-        <Notebook/>
-        Book Appointment
-      </Button>
-      <div className='hidden md:block'>
+    <div className=''>
+
+      <BookingSection>
+         <Button className="flex gap-2 w-full" >
+          <NotebookPen/>
+          Book Appointment
+         </Button>
+      </BookingSection>
+      <div className=' md:block'>
       <h2 className='font-bold text-lg mt-3 mb-4'>Similar Business</h2>
       <div className='hover:border border-primary'>
       {businessLists&&businessLists.map((business, index)=>
