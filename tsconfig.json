@@ -34,7 +34,7 @@
     "app/.next/types/**/*.ts",
     "app/layout.jsapp/page.tsxe.js",
     ".next/types/**/*.ts"
-  ],
+, "app/_components/BusinessList.jsx"  ],
   "exclude": [
     "node_modules"
   ]

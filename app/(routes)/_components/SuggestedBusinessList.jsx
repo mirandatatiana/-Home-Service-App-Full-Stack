@@ -25,7 +25,7 @@ function SuggestedBusinessList({bussines}) {
 
 
   return (
-    <div className=''>
+    <div className='md:pl-10'>
 
       <BookingSection>
          <Button className="flex gap-2 w-full" >
@@ -33,7 +33,7 @@ function SuggestedBusinessList({bussines}) {
           Book Appointment
          </Button>
       </BookingSection>
-      <div className=' md:block'>
+      <div className=' hidden md:block'>
       <h2 className='font-bold text-lg mt-3 mb-4'>Similar Business</h2>
       <div className='hover:border border-primary'>
       {businessLists&&businessLists.map((business, index)=>

@@ -1,11 +1,21 @@
 import React from 'react'
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription   } from '@/components/ui/sheet'
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription,SheetFooter, SheetClose   } from '@/components/ui/sheet'
 import { Calendar } from "@/components/ui/calendar"
 import { useEffect, useState } from 'react'
+import { Button } from '@/components/ui/button'
 
 function BookingSection({children}) {
 
-    const [date,setDate]=useState(new Date())
+    const [date,setDate]=useState(new Date());
+    const [timeSlot, setTimeSlot]=useState([]);
+    const [selectedTime, setSelectedTime]=useState();
+
+    useEffect(()=>{
+      getTime();
+    },[])
+
+
+
     const getTime = () => {
       const timeList = [];
       for (let i = 10; i <= 12; i++) {
@@ -27,30 +37,51 @@ function BookingSection({children}) {
 
       setTimeSlot(timeList)
     }
+
+    const saveBooking=()=>{
+      
+    }
   return (
     <div className=''>
-        {children}
+      
         <Sheet className="">
-  <SheetTrigger>open</SheetTrigger>
-  <SheetContent className='overflow-auto flex absolute inset-y-0 right-0 mt-9  p-10 bg-white rounded-t'  side={'right'} >
+  <SheetTrigger asChild>{children}</SheetTrigger>
+  <SheetContent className='overflow-auto' >
     <SheetHeader>
       <SheetTitle>Book an Service</SheetTitle>
       <SheetDescription>
       Select Date and Time slot to Book a service
       <div className='flex flex-col gap-5 items-baseline'>
-        <h2>Select Date</h2>
+        <h2 className='mt-5 font-bold'>Select Date</h2>
         <Calendar
       mode="single"
       selected={date}
       onSelect={setDate}
-      className=" flex mt-9 rounded-md border"
+      className="rounded-md border"
     />
-      <div>
-        Time Slot
-      </div>
+    </div>
+    <h2 className='my-5 font-bold'>Select Time Slot</h2>
+      <div className='grid grid-cols-3 gap-3'>
+        {timeSlot.map((item,index)=>(
+          <Button key={index}
+          variant='outline'
+          className={`border rounded-full p-2 px-3 hover:bg-primary hover:text-white ${selectedTime==item.time&&'bg-primary text-white'}`} 
+          onClick={()=>setSelectedTime(item.time)}
+          >{item.time}</Button>
+        ))}
       </div>
       </SheetDescription>
     </SheetHeader>
+    <SheetFooter className="mt-5">
+          <SheetClose asChild>
+            <div className='flex gap-5'>
+            <Button variant="destructive" className=''>Cancel</Button>
+            <Button disabled={!(selectedTime&&date)}
+            onClick={()=>saveBooking()}
+            >Book</Button>
+            </div>
+          </SheetClose>
+        </SheetFooter>
   </SheetContent>
 </Sheet>
 
