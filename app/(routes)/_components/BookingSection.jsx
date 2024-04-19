@@ -3,12 +3,15 @@ import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescri
 import { Calendar } from "@/components/ui/calendar"
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
+import GlobalApi from '@/app/_service/GlobalApi'
+import { useSession } from 'next-auth/react'
 
-function BookingSection({children}) {
+function BookingSection({children,business}) {
 
     const [date,setDate]=useState(new Date());
     const [timeSlot, setTimeSlot]=useState([]);
     const [selectedTime, setSelectedTime]=useState();
+    const {data}=useSession()
 
     useEffect(()=>{
       getTime();
@@ -39,6 +42,7 @@ function BookingSection({children}) {
     }
 
     const saveBooking=()=>{
+      GlobalApi.createNewBooking(business.id,date,selectedTime,data.user.email,data.user.name)
       
     }
   return (
