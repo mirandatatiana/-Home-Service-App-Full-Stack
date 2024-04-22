@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import GlobalApi from '@/app/_service/GlobalApi'
 import { useSession } from 'next-auth/react'
+import { toast } from 'sonner'
 
 function BookingSection({children,business}) {
 
@@ -15,7 +16,19 @@ function BookingSection({children,business}) {
 
     useEffect(()=>{
       getTime();
+
     },[])
+
+    useEffect(()=>{
+      date&&BusinessBookedSlot();
+    },[date])
+
+    const BusinessBookedSlot=()=>{
+      GlobalApi.BusinessBookedSlot(business.id,date)
+      .then(resp=>{
+        console.log(resp)
+      })
+    }
 
 
 
@@ -42,7 +55,19 @@ function BookingSection({children,business}) {
     }
 
     const saveBooking=()=>{
-      GlobalApi.createNewBooking(business.id,date,selectedTime,data.user.email,data.user.name)
+      GlobalApi.createNewBooking(business.id,date,selectedTime,data?.user?.email,data?.user?.name)
+      .then(resp=>{
+        console.log(resp);
+        if(resp)
+        {
+          setDate();
+          setSelectedTime();
+          toast('Service Booked successfully!')
+                }
+      }, (e)=>{
+        toast('Error')
+
+      })
       
     }
   return (

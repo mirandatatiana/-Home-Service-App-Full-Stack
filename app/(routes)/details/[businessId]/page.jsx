@@ -1,14 +1,15 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import GlobalApi from '@/app/_service/GlobalApi';
 import BusinessInfo from '@/app/(routes)/_components/BusinessInfo'
 import BusinessDescription from '@/app/(routes)/_components/BusinessDescription'
 import SuggestedBusinessList from '@/app/(routes)/_components/SuggestedBusinessList'
+
 function BusinessDetails({params}) {
 
     const {data,status}=useSession();
-    const[business,SetBusiness]=useState([])
+    const[business,setBusiness]=useState([])
 
     useEffect(()=>{
       params&&getbusinessById();
@@ -20,7 +21,7 @@ function BusinessDetails({params}) {
 
     const getbusinessById=()=>{
       GlobalApi.getBusinessById(params.businessId).then(resp=>{
-       SetBusiness(resp.businessList);
+       setBusiness(resp.businessList);
       })
     }
     const checkUserAuth=()=>{
@@ -44,7 +45,7 @@ function BusinessDetails({params}) {
       <BusinessInfo business={business}/>
 
      <div className=' grid grid-cols-3 mt-16'>
-      <div className='col-span-3 md:col-span-2 order-last md:order-first'>
+      <div className='col-span-3 md:col-span-2'>
       <BusinessDescription business={business}/>
       </div>
       <div className=' '>

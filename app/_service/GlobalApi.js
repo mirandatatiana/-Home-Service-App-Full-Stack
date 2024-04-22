@@ -94,16 +94,37 @@ const createNewBooking=async(businessId,date,time,userMail,userName)=>{
   const mutationQuery=gql`
   mutation CreateBooking {
     createBooking(
-      data: {bookingStatus: Booked, businessList: {connect: {BusinessList: {id: "`+businessId+`"}}}, date: "`+date+`", time: "`+time+`", userMail: "`+userMail+`", userName: "`+userName+`"}
+      data: {bookingStatus: Booked,
+         businessList: {connect: {id: "`+businessId+`"}}, 
+         date: "`+date+`", time: "`+time+`",
+          userMail: "`+userMail+`",
+           userName: "`+userName+`"}
     ) {
       id
     }
-  }
-  
+    publishManyBookings(to: PUBLISHED) {
+      count
+     }
+    }  
   `
   const result=await request(MASTER_URL,mutationQuery)
   return result
 }
+
+const BusinessBookedSlot=async(businessId,date)=>{
+  const query=gql`
+  query BusinessBookedSlot {
+    bookings(where: {businessList: {id: "`+businessId+`"},
+     date: "`+date+`"}) {
+      date
+      time
+    }
+  `
+  const result=await request(MASTER_URL,query)
+  return result
+}
+  
+
 
 
 
@@ -112,5 +133,6 @@ export default {
     getBusinessList,
     getBusinessByCategory,
     getBusinessById,
-    createNewBooking
+    createNewBooking,
+    BusinessBookedSlot,
 }
