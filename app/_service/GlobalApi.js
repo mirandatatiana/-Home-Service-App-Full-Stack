@@ -110,7 +110,6 @@ const createNewBooking=async(businessId,date,time,userMail,userName)=>{
   const result=await request(MASTER_URL,mutationQuery)
   return result
 }
-
 const BusinessBookedSlot=async(businessId,date)=>{
   const query=gql`
   query BusinessBookedSlot {
@@ -119,12 +118,34 @@ const BusinessBookedSlot=async(businessId,date)=>{
       date
       time
     }
+  }
   `
   const result=await request(MASTER_URL,query)
   return result
 }
   
-
+const GetUserBookingHistory=async(userMail)=>{
+  const query=gql`
+  query GetUserBookingHistory {
+    bookings(where: {userMail: "`+userMail+`"}
+    orderBy: publishedAt_DESC)
+     {
+      businessList {
+        name
+        images {
+          url
+        }
+        contactPerson
+        adress
+      }
+      date
+      time
+    }
+  }
+  `
+  const result=await request(MASTER_URL,query)
+  return result
+}
 
 
 
@@ -135,4 +156,5 @@ export default {
     getBusinessById,
     createNewBooking,
     BusinessBookedSlot,
+    GetUserBookingHistory,
 }

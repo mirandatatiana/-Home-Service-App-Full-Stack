@@ -11,6 +11,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import Link from 'next/link';
+
 
 function Header() {
 
@@ -44,7 +46,9 @@ function Header() {
   <DropdownMenuContent className="bg-slate-200 ">
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
     <DropdownMenuSeparator />
-    <DropdownMenuItem>My Booking</DropdownMenuItem>
+    <DropdownMenuItem>
+    <Link href={'/bookinghistory'}> My Booking</Link> 
+      </DropdownMenuItem>
     <DropdownMenuItem onClick={()=>signOut()}>Logout</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>

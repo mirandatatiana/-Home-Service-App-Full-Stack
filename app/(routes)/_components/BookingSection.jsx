@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import GlobalApi from '@/app/_service/GlobalApi'
 import { useSession } from 'next-auth/react'
 import { toast } from 'sonner'
+import moment from 'moment';
 
 function BookingSection({children,business}) {
 
@@ -13,6 +14,7 @@ function BookingSection({children,business}) {
     const [timeSlot, setTimeSlot]=useState([]);
     const [selectedTime, setSelectedTime]=useState();
     const {data}=useSession()
+    const [bookedSlot, setBookedSlot]=useState([]);
 
     useEffect(()=>{
       getTime();
@@ -24,9 +26,10 @@ function BookingSection({children,business}) {
     },[date])
 
     const BusinessBookedSlot=()=>{
-      GlobalApi.BusinessBookedSlot(business.id,date)
+      GlobalApi.BusinessBookedSlot(business.id,moment(date).format('DD-MM-YYYY'))
       .then(resp=>{
         console.log(resp)
+        setBookedSlot(resp.bookings)
       })
     }
 
@@ -55,7 +58,7 @@ function BookingSection({children,business}) {
     }
 
     const saveBooking=()=>{
-      GlobalApi.createNewBooking(business.id,date,selectedTime,data?.user?.email,data?.user?.name)
+      GlobalApi.createNewBooking(business.id,moment(date).format('DD-MM-YYYY'),selectedTime,data?.user?.email,data?.user?.name)
       .then(resp=>{
         console.log(resp);
         if(resp)
@@ -68,7 +71,9 @@ function BookingSection({children,business}) {
         toast('Error')
 
       })
-      
+    }
+    const isSlotBooked=(time)=>{
+      return bookedSlot.find(item=>item.time==time)
     }
   return (
     <div className=''>
@@ -93,6 +98,7 @@ function BookingSection({children,business}) {
       <div className='grid grid-cols-3 gap-3'>
         {timeSlot.map((item,index)=>(
           <Button key={index}
+          disabled={isSlotBooked(item.time)}
           variant='outline'
           className={`border rounded-full p-2 px-3 hover:bg-primary hover:text-white ${selectedTime==item.time&&'bg-primary text-white'}`} 
           onClick={()=>setSelectedTime(item.time)}
