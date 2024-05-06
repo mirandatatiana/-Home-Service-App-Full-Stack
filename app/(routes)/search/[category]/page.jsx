@@ -7,7 +7,6 @@ function BusinessByCategory({params}) {
 
 const[businessLists,setBusinessList]=useState([]);
   useEffect(()=>{
-    console.log(params);
     params&&getBusinessList()
 
   },[params]);

@@ -62,7 +62,6 @@ export const authOptions = {
                         refresh_token: tokens.refresh_token ?? token.refresh_token,
                     }
                 } catch (error) {
-                    console.error("Error refreshing access token", error)
                     return {...token, error: "RefreshAccessTokenError"}
                 }
             }

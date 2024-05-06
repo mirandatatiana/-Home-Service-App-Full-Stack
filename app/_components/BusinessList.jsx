@@ -4,16 +4,16 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 
-function BusinessList({ businessLists, title }) {
+function BusinessList({ businessLists}) {
   return (
     <div className="mt-10 pt-10">
       <h2 className="font-bold text-[22px]"></h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
         {businessLists.length > 0
-          ? businessLists.map((business, index) => (
-              <Link href={'/details/'+business.id}
+          ? businessLists.map((business,index) => (
+              <Link key={index} href={'/details/'+business.id}
                 className="shadow-sm rounded-lg hover:shadow-sm hover:shadow-slate-500 hover:scale-105 transition-all ease-in-out"
-                key={index}
+                
               >
                 <Image
                   src={business?.images[0].url}
@@ -22,7 +22,7 @@ function BusinessList({ businessLists, title }) {
                   height={200}
                   className="h-[200px] md:h-[600px] object-cover rounded-lg"
                 />
-                <div className=" flex flex-col items-baseline p-3">
+                <div   className=" flex flex-col items-baseline p-3">
                   <h2 className="p-1 bg-cyan-950 text-gray-200 rounded-full px-2 text-[12px]">
                     {business.category.name}
                   </h2>
@@ -35,7 +35,7 @@ function BusinessList({ businessLists, title }) {
                 </div>
               </Link>
             ))
-          : [1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+          : [1, 2, 3, 4, 5, 6, 7].map(() => (
               <div className="w-full h-[300px] bg-slate-200 rounded-lg animate-pulse"></div>
             ))}
       </div>

@@ -28,7 +28,6 @@ function BookingSection({children,business}) {
     const BusinessBookedSlot=()=>{
       GlobalApi.BusinessBookedSlot(business.id,moment(date).format('DD-MM-YYYY'))
       .then(resp=>{
-        console.log(resp)
         setBookedSlot(resp.bookings)
       })
     }
@@ -60,7 +59,6 @@ function BookingSection({children,business}) {
     const saveBooking=()=>{
       GlobalApi.createNewBooking(business.id,moment(date).format('DD-MM-YYYY'),selectedTime,data.user.email,data.user.name)
       .then(resp=>{
-        console.log(resp);
         if(resp)
         {
           setDate();

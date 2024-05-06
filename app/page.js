@@ -16,14 +16,12 @@ export default function Home() {
   const getCategoryList = () => {
     GlobalApi.getCategory().then(resp => {
       setCategoryList(resp.categories);
-      console.log(resp.categories)
     })
   }
 
   const getBusinessList = () => {
     GlobalApi.getBusinessList().then(resp => {
       setBusinessList(resp.businessLists)
-      console.log(resp.getBusinessList)
     })
   }
 

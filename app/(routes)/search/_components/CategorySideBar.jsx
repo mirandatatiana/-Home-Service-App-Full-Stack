@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
 import { useEffect, useState } from "react";
-import GlobalApi from "/Users/tatianamiranda/untitled folder/home-service-app/app/_service/GlobalApi.js";
-import Image from "next/image";
+import GlobalApi from "@/app/_service/GlobalApi"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -21,7 +20,6 @@ function CategorySideBar() {
   const getCategoryList = () => {
     GlobalApi.getCategory().then((resp) => {
       setCategoryList(resp.categories);
-      console.log(resp);
     });
   };
   return (
