@@ -1,4 +1,6 @@
+import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
+import authOptions from '../../../../lib/configs/auth/authOptions'
 
 
 export const authOptions  = {
@@ -33,10 +35,10 @@ export const authOptions  = {
                     profile: {
                       name: profile?.name,
                       email: profile?.email,
-                      image: profile?.picture,
+                      image: profile?.image,
                   },
                 }
-            } else if (Date.now() < token.expires_at * 1000) {
+            } else if (Date.now() < tokens.expires_at * 1000) {
                 return token
             } else {
                 try {
@@ -81,5 +83,8 @@ export const authOptions  = {
 }  
 
 
+const handler = NextAuth(authOptions)
+
+export { handler as GET, handler as POST }
 export default NextAuth(authOptions)
 
