@@ -1,5 +1,4 @@
 import NextAuth from "next-auth/next";
-import { authOptions } from "next-auth"
 
 
 export const authOptions  = {
