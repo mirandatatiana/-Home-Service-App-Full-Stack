@@ -1,9 +1,8 @@
 import { NextAuthOptions } from "next-auth";
 import NextAuth from "next-auth/next";
-import authOptions from '../../../../lib/configs/auth/authOptions'
 
 
-export const authOptions  = {
+export const NextAuthOptions  = {
     providers: [
     {
         id: "descope",
@@ -83,8 +82,8 @@ export const authOptions  = {
 }  
 
 
-const handler = NextAuth(authOptions)
+const handler = NextAuth(NextAuthOptions)
 
 export { handler as GET, handler as POST }
-export default NextAuth(authOptions)
+export default NextAuth(NextAuthOptions)
 
