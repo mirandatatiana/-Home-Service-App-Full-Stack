@@ -26,18 +26,18 @@ function CategorySideBar() {
   };
   return (
     <div>
-      <h2 className="font-bold mb-3 text-lg text-primary">Categories</h2>
+      <h2 className="font-bold mb-3 text-lg ">Classes</h2>
       <div>
         {categoryList.map((category, index) => (
           <Link
             href={"/search/" + category.name}
             key={index}
-            className={`flex gap-2 p-3 border rounded-lg mb-3 mr-10 cursor-pointer hover:bg-purple-50 hover:text-primary hover:border-primary hover:shadow-md items-center ${
+            className={`flex gap-2 p-3 border rounded-lg mb-3 mr-10 cursor-pointer hover:bg-cyan-800 hover:text-gray-200 hover:border-cyan-950 hover:shadow-md items-center ${
               selectedCategory == category.name &&
-              "border-primary text-primary shadow-md bg-purple-50"
+              "border-cyan-950 text-gray-500 shadow-md bg-white-"
             }`}
           >
-            <Image src={category.icon.url} alt="icon" width={30} height={30} />
+            {/* <Image src={category.icon.url} alt="icon" width={30} height={30} /> */}
             <h2>{category.name}</h2>
           </Link>
         ))}

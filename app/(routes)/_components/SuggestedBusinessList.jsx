@@ -3,14 +3,6 @@ import {  NotebookPen } from 'lucide-react'
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
 import BookingSection from './BookingSection';
 import GlobalApi from '@/app/_service/GlobalApi';
 
@@ -34,7 +26,7 @@ function SuggestedBusinessList({business}) {
     <div className='md:pl-10'>
      
       <BookingSection business={business}>
-        <Button className="flex gap-2 w-full">
+        <Button className=" pt-2  bg-cyan-950 text-gray-200 hover:bg-cyan-600">
         <NotebookPen/>
         Book Appointment  
         </Button> 
@@ -49,7 +41,7 @@ function SuggestedBusinessList({business}) {
           <Link href={'/details/'+business.id} className="flex gap-2 mb-4
           hover:border rounded-lg p-2
           cursor-pointer hover:shadow-md
-           border-primary">
+           border-cyan-600">
             <Image src={business?.images[0].url}
             alt={business.name}
             width={80}
@@ -58,7 +50,7 @@ function SuggestedBusinessList({business}) {
             />
             <div className=''>
               <h2 className='font-bold'>{business.name}</h2>
-              <h2 className='text-primary'>{business.contactPerson}</h2>
+              <h2 className='text-cyan-600'>{business.contactPerson}</h2>
               <h2 className='text-gray-400'>{business.address}</h2>
 
             </div>

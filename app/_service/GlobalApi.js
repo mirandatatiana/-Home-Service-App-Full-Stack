@@ -11,9 +11,6 @@ const getCategory=async()=>{
         }
         id
         name
-        icon {
-          url
-        }
       }
     }`
 
@@ -31,7 +28,6 @@ const getBusinessList=async()=>{
         name
       }
       contactPerson
-      email
       images {
         url
       }
@@ -127,9 +123,7 @@ const BusinessBookedSlot=async(businessId,date)=>{
 const GetUserBookingHistory=async(userMail)=>{
   const query=gql`
   query GetUserBookingHistory {
-    bookings(where: {userMail: "`+userMail+`"}
-    orderBy: publishedAt_DESC)
-     {
+    bookings(where: {userMail: "`+userMail+`"}, orderBy: date_DESC) {
       businessList {
         name
         images {

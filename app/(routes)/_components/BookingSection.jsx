@@ -58,7 +58,7 @@ function BookingSection({children,business}) {
     }
 
     const saveBooking=()=>{
-      GlobalApi.createNewBooking(business.id,moment(date).format('DD-MM-YYYY'),selectedTime,data?.user?.email,data?.user?.name)
+      GlobalApi.createNewBooking(business.id,moment(date).format('DD-MM-YYYY'),selectedTime,data.user.email,data.user.name)
       .then(resp=>{
         console.log(resp);
         if(resp)
@@ -100,7 +100,7 @@ function BookingSection({children,business}) {
           <Button key={index}
           disabled={isSlotBooked(item.time)}
           variant='outline'
-          className={`border rounded-full p-2 px-3 hover:bg-primary hover:text-white ${selectedTime==item.time&&'bg-primary text-white'}`} 
+          className={`border rounded-full p-2 px-3  hover:bg-cyan-600 hover:text-white border-cyan-950 text-gray-500 ${selectedTime==item.time&&'bg-cyan-600 text-white'}`} 
           onClick={()=>setSelectedTime(item.time)}
           >{item.time}</Button>
         ))}
@@ -111,7 +111,7 @@ function BookingSection({children,business}) {
           <SheetClose asChild>
             <div className='flex gap-5'>
             <Button variant="destructive" className=''>Cancel</Button>
-            <Button disabled={!(selectedTime&&date)}
+            <Button className='bg-cyan-800 hover:bg-cyan-600' disabled={!(selectedTime&&date)}
             onClick={()=>saveBooking()}
             >Book</Button>
             </div>

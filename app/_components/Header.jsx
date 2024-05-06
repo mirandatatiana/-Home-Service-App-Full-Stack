@@ -47,13 +47,37 @@ function Header() {
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
     <DropdownMenuSeparator />
     <DropdownMenuItem>
-    <Link href={'/bookinghistory'}> My Booking</Link> 
+    <Link href={'/mybooking'}> My Booking</Link> 
       </DropdownMenuItem>
     <DropdownMenuItem onClick={()=>signOut()}>Logout</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
           :
-          <Button onClick={()=>signIn('descope')} className="p-5 bg-purple-300 rounded-lg">Login / Sign up</Button>
+          <Button onClick={()=>signIn('descope')} className="p-5 bg-cyan-800 rounded-lg">Login / Sign up</Button>
+          }
+        </div>
+        <div className=" items-center gap-6 hidden" >
+          {data?.user?
+         
+          <DropdownMenu >
+  <DropdownMenuTrigger > 
+    <Image src={data?.user?.image}
+          alt='user'
+          width={40}
+          height={40}
+          className='rounded-full'
+          /></DropdownMenuTrigger >
+  <DropdownMenuContent className="bg-slate-200 ">
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>
+    <Link href={'/mybooking'}> My Booking</Link> 
+      </DropdownMenuItem>
+    <DropdownMenuItem onClick={()=>signOut()}>Logout</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+          :
+          <Button onClick={()=>signIn('descope')} className="p-5 bg-cyan-800 rounded-lg">Login / Sign up</Button>
           }
         </div>
       </div>
