@@ -1,4 +1,3 @@
-import NextAuth from "next-auth/next";
 import NextAuth from 'next-auth'
 import authOptions from '../../../../lib/configs/auth/authOptions'
 
