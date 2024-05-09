@@ -24,8 +24,7 @@ import NextAuth from "next-auth/next";
     }],
     callbacks: {
         secret: process.env.NEXTAUTH_SECRET,
-        signIn: process.env.NEXTAUTH_URL,
-        signOut:  process.env.NEXTAUTH_URL,
+     
         async jwt({token, account, profile}) {
             if (account) {
                 return {
