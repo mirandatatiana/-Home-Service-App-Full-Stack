@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Creating a GitHub README for a gym page using Next.js, TypeScript, Hygraph, Styled Components (I assume you meant Styled Components instead of shadcn), and React would be a great way to showcase your project. Here's a template you could start with:
+Here DEMO https://gym-pagewith-reserve-system.vercel.app/
+```markdown
+# Gym Page
+
+Welcome to our Gym Page project! This project aims to provide a platform for gym owners to manage their classes and for users to book appointments conveniently.
+
+## Technologies Used
+
+- Next.js
+- TypeScript
+- Hygraph
+- Styled Components
+- React
+
+## Features
+
+- **Class Booking**: Users can browse through available classes and book appointments.
+- **Admin Dashboard**: Gym owners can manage classes, schedules, and bookings at the moment on Hygraph
+- **Authentication**: Secure user authentication system for booking and managing classes.
+- **Responsive Design**: Ensures a seamless experience across various devices.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Make sure you have Node.js and npm (or yarn) installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+https://github.com/mirandatatiana/GymPagewithReserveSystem.git ```
+
+2. Navigate into the project directory:
+
+   ```bash
+   cd gym-page
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open your browser and visit [http://localhost:3000](http://localhost:3000) to view the application.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/my-feature`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add my feature'`).
+5. Push to the branch (`git push origin feature/my-feature`).
+6. Create a new Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to customize the content and styling according to your project's specific requirements and preferences.
