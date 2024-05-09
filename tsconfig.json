@@ -16,6 +16,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "noImplicitAny": false,
+
     "plugins": [
       {
         "name": "next"
@@ -35,7 +37,6 @@
     "app/layout.jsapp/page.tsxe.js",
     ".next/types/**/*.ts"
 , "next-env.d.ts", "app/api/auth/[...nextauth]/route.tsx", "app/api/auth/[...nextauth]/route.jsx"],
-  "exclude": [
-    "node_modules"
+  "exclude": ["node_modules"
   ]
-}
+} 
