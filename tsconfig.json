@@ -36,7 +36,7 @@
     "app/.next/types/**/*.ts",
     "app/layout.jsapp/page.tsxe.js",
     ".next/types/**/*.ts"
-, "next-env.d.ts", "app/api/auth/[...nextauth]/route.tsx", "app/api/auth/[...nextauth]/route.jsx"],
+, "next-env.d.ts", "app/api/auth/[...nextauth]/route.tsx", "app/api/auth/[...nextauth]/route.jsx", "app/layout.js", "app/api/auth/[...nextauth].js/route.js"],
   "exclude": ["node_modules"
   ]
 } 
