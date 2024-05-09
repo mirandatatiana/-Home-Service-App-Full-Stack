@@ -16,8 +16,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "noImplicitAny": false,
-
     "plugins": [
       {
         "name": "next"
@@ -36,7 +34,8 @@
     "app/.next/types/**/*.ts",
     "app/layout.jsapp/page.tsxe.js",
     ".next/types/**/*.ts"
-, "next-env.d.ts", "app/api/auth/[...nextauth]/route.tsx", "app/api/auth/[...nextauth]/options.js", "app/layout.js", "app/api/auth/[...nextauth]/route.js"],
-  "exclude": ["node_modules"
+, "app/_components/BusinessList.jsx", "app/api/auth/[...nextauth]/route.js"  ],
+  "exclude": [
+    "node_modules"
   ]
-} 
+}
