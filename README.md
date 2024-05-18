@@ -1,4 +1,4 @@
-Creating a GitHub README for a gym page using Next.js, TypeScript, Hygraph, Styled Components (I assume you meant Styled Components instead of shadcn), and React would be a great way to showcase your project. Here's a template you could start with:
+
 Here DEMO https://gym-pagewith-reserve-system.vercel.app/
 ```markdown
 # Gym Page
